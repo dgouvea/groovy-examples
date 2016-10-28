@@ -1,2 +1,2 @@
 # groovy-examples
-Groovy examples for training
+Groovy examples for training.
