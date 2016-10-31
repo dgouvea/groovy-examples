@@ -1,17 +1,19 @@
 package example.basic
 
+import static org.junit.Assert.*
+
 import org.junit.Test
 
 class ClassJavaTest {
 
     @Test
     public void testSimplePojo() {
-        ClassJava java = new ClassJava()
-        java.setName("John")
-        java.setAge(30)
+        ClassJava java = new ClassJava();
+        java.setName("John");
+        java.setAge(30);
 
-        assert "John" == java.getName()
-        assert 30 == java.getAge()
+        assertEquals("John", java.getName());
+        assertEquals(30, java.getAge());
     }
 
 }
