@@ -35,5 +35,9 @@ class Operator {
 	Operator negative() {
 		new Operator(value * -1)
 	}
+
+	void leftShift(int i) {
+		value += i
+	}
 	
 }

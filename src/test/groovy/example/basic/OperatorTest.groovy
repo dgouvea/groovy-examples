@@ -73,5 +73,13 @@ class OperatorTest {
 		o = -o
 		assertEquals(-4, o.value)
 	}
+
+	@Test
+	void testLeftShift() {
+		Operator o = new Operator(4)
+				
+		o << 2
+		assertEquals(6, o.value)
+	}
 	
 }
