@@ -2,42 +2,42 @@ package example.basic
 
 class Operator {
 
-	int value
-	
-	Operator(int value) {
-		this.value = value
-	}
-	
-	Operator plus(int i) {
-		new Operator(value + i)
-	}
+    int value
 
-	Operator minus(int i) {
-		new Operator(value - i)
-	}
+    Operator(int value) {
+        this.value = value
+    }
 
-	Operator multiply(int i) {
-		new Operator(value * i)
-	}
+    Operator plus(int i) {
+        new Operator(value + i)
+    }
 
-	Operator div(int i) {
-		new Operator((value / i).intValue())
-	}
-	
-	Operator next() {
-		new Operator(value+1)
-	}
+    Operator minus(int i) {
+        new Operator(value - i)
+    }
 
-	Operator previous() {
-		new Operator(value-1)
-	}
+    Operator multiply(int i) {
+        new Operator(value * i)
+    }
 
-	Operator negative() {
-		new Operator(value * -1)
-	}
+    Operator div(int i) {
+        new Operator((value / i).intValue())
+    }
 
-	void leftShift(int i) {
-		value += i
-	}
-	
+    Operator next() {
+        new Operator(value + 1)
+    }
+
+    Operator previous() {
+        new Operator(value - 1)
+    }
+
+    Operator negative() {
+        new Operator(value * -1)
+    }
+
+    void leftShift(int i) {
+        value += i
+    }
+
 }

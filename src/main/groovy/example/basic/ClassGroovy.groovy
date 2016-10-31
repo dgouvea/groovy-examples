@@ -2,7 +2,7 @@ package example.basic
 
 class ClassGroovy {
 
-	String name
-	int age
-	
+    String name
+    int age
+
 }
