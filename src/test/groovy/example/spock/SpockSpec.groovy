@@ -1,6 +1,7 @@
 package example.spock
 
 import groovy.json.JsonBuilder
+import groovy.json.JsonSlurper
 import groovy.xml.MarkupBuilder
 import org.custommonkey.xmlunit.XMLUnit
 import spock.lang.Specification
@@ -53,6 +54,19 @@ class SpockSpec extends Specification {
             }
         then:
             builder.toString() == '{"people":{"person":{"firstName":"Guillame","lastName":"Laforge","address":{"city":"Paris","country":"France","zip":12345},"married":true,"conferences":["JavaOne","Gr8conf"]}}}'
+    }
+
+    def "JSON Parser parse json strings"() {
+        given:
+            def slurper = new JsonSlurper()
+            def result = slurper.parseText('{"person":{"name":"Guillaume","age":33,"pets":["dog","cat"]}}')
+        expect:
+            result.person.name == "Guillaume"
+            result.person.age == 33
+            result.person.pets.size() == 2
+            result.person.pets[0] == "dog"
+            result.person.pets[1] == "cat"
+
     }
 
     def "XML Builder generates valid node structure"() {

@@ -1,5 +1,7 @@
 # editorconfig.org
 root = true
+
+[*.{groovy,java}]
 indent_style = space
 
 [*.{js,jsx,ts,tsx}]
