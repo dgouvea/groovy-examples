@@ -47,14 +47,14 @@ class ListTest {
 
     @Test
     void testFlatten() {
-    	List list = [0, 1, 6, 4, [3, 1, 2, [4, 5]], 8]
-    	assert [0, 1, 6, 4, 3, 1, 2, 4, 5, 8] == list.flatten()
+        List list = [0, 1, 6, 4, [3, 1, 2, [4, 5]], 8]
+        assert [0, 1, 6, 4, 3, 1, 2, 4, 5, 8] == list.flatten()
     }
 
     @Test
     void testSet() {
-    	Set list = [0, 1, 6, 8, 1, 2, 6, 7, 8]
-		assert [0, 1, 6, 8, 2, 7] as Set == list
+        Set list = [0, 1, 6, 8, 1, 2, 6, 7, 8]
+        assert [0, 1, 6, 8, 2, 7] as Set == list
     }
 
     @Test

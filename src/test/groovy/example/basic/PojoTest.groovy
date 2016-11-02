@@ -14,9 +14,9 @@ class PojoTest {
 
     @Test
     void testConstructor() {
-    	Pojo pojo = new Pojo(name: "John Something Doe")
-		
-		assert "Get John Doe" == pojo.name
+        Pojo pojo = new Pojo(name: "John Something Doe")
+
+        assert "Get John Doe" == pojo.name
     }
 
 }
