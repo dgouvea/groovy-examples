@@ -46,6 +46,12 @@ class ListTest {
     }
 
     @Test
+    void testFlatten() {
+    	List list = [0, 1, 6, 4, [3, 1, 2, [4, 5]], 8]
+    	assert [0, 1, 6, 4, 3, 1, 2, 4, 5, 8] == list.flatten()
+    }
+
+    @Test
     void testPrimitiveArray() {
         String[] list = ["A", "B", "C"] as String[]
 
