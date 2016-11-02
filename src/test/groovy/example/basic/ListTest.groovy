@@ -52,6 +52,12 @@ class ListTest {
     }
 
     @Test
+    void testSet() {
+    	Set list = [0, 1, 6, 8, 1, 2, 6, 7, 8]
+		assert [0, 1, 6, 8, 2, 7] as Set == list
+    }
+
+    @Test
     void testPrimitiveArray() {
         String[] list = ["A", "B", "C"] as String[]
 
