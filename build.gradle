@@ -39,6 +39,8 @@ dependencies {
     // We use the latest groovy 2.x version for building this library
     compile 'org.codehaus.groovy:groovy'
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
 
     // We use the awesome Spock testing and specification framework
     compile('org.spockframework:spock-core:1.1-groovy-2.4-rc-2')

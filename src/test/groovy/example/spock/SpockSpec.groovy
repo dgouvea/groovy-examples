@@ -5,6 +5,7 @@ import groovy.json.JsonSlurper
 import groovy.xml.MarkupBuilder
 import org.custommonkey.xmlunit.XMLUnit
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class SpockSpec extends Specification {
     def "Compare two same Strings in different format"() {
@@ -137,4 +138,26 @@ class SpockSpec extends Specification {
     }
 
 
+    def "computing the maximum of two numbers with << operator at where"() {
+        expect:
+            Math.max(a, b) == c
+
+        where:
+            a << [5, 3]
+            b << [1, 9]
+            c << [5, 9]
+    }
+
+    @Unroll
+    def "computing the maximum out of two numbers [#a, #b] with table where style"() {
+        expect:
+            Math.max(a, b) == c
+        where:
+            a | b | c
+            5 | 1 | 5
+            3 | 9 | 9
+    }
+
 }
+
+
