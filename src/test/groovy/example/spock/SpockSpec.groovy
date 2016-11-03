@@ -158,6 +158,22 @@ class SpockSpec extends Specification {
             3 | 9 | 9
     }
 
+    @Unroll("Checking image name #pictureFile")
+    def "All kinds of JPEG file are accepted"() {
+        given: "an image extension checker"
+            ImageNameValidator validator = new ImageNameValidator();
+        expect: "that all jpeg filenames are accepted regardless of case "
+            validator.isValidImageExtension(pictureFile)
+        where: "sample image names are"
+            pictureFile << GroovyCollections.combinations([["sample.", "Sample.", " SAMPLE."], ['j', 'J'], ['p', 'P'], ['e', 'E', ''], ['g', 'G']])*.join()
+    }
+
+}
+
+class ImageNameValidator {
+    boolean isValidImageExtension(String filename) {
+        return filename
+    }
 }
 
 
