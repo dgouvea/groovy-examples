@@ -1,9 +1,13 @@
 package example.spock
 
+import example.basic.Operator
+import example.basic.PointlessCategory
+import example.basic.PointlessCategoryWithoutAnnotation
 import groovy.json.JsonBuilder
 import groovy.json.JsonSlurper
 import groovy.xml.MarkupBuilder
 import org.custommonkey.xmlunit.XMLUnit
+import spock.lang.Ignore
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -160,12 +164,51 @@ class SpockSpec extends Specification {
 
     @Unroll("Checking image name #pictureFile")
     def "All kinds of JPEG file are accepted"() {
+
         given: "an image extension checker"
             ImageNameValidator validator = new ImageNameValidator();
+
         expect: "that all jpeg filenames are accepted regardless of case "
             validator.isValidImageExtension(pictureFile)
+
         where: "sample image names are"
             pictureFile << GroovyCollections.combinations([["sample.", "Sample.", " SAMPLE."], ['j', 'J'], ['p', 'P'], ['e', 'E', ''], ['g', 'G']])*.join()
+    }
+
+    def "Category test"() {
+        given:
+            def operator = new Operator(5)
+
+        when: "Using with PointlessCategory written with @Category annotation"
+            use(PointlessCategory) {
+                operator.incrementMe()
+            }
+        then: "Must work fine, and no MissingMethodException was thrown"
+            operator.value == 6
+            notThrown(MissingMethodException)
+
+        when: "Using without category, no method available"
+            operator.incrementMe()
+        then: "MissingMethodException should be thrown"
+            thrown(MissingMethodException)
+
+        when: "Using with PointlessCategory written with static methods and passing of instance as first parameter"
+            use(PointlessCategoryWithoutAnnotation) {
+                operator.incrementMe()
+            }
+        then: "Must work fine, and no MissingMethodException was thrown"
+            operator.value == 7
+            notThrown(MissingMethodException)
+    }
+
+    @Ignore
+    def "Beautiful failure"() {
+        when:
+            def a = 5
+        and:
+            def b = 10
+        then:
+            (a + b) * b == 149
     }
 
 }
