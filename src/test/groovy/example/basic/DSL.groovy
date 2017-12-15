@@ -1,9 +1,9 @@
 show = { println it }
 square_root = { Math.sqrt(it) }
 
-def please(aciton) {
+def please(action) {
     [the: { what ->
-        [of: { n -> aciton(what(n)) }]
+        [of: { n -> action(what(n)) }]
     }]
 }
 
